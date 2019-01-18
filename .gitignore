@@ -1,0 +1,15 @@
+# Composer
+/composer.lock
+/vendor
+
+# Docker
+/.env
+
+# PHP CS Fixer
+/.php_cs.cache
+
+# PHPUnit
+/phpunit.xml
+/build
+
+\.idea/
