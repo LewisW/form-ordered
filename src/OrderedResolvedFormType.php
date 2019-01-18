@@ -28,7 +28,7 @@ class OrderedResolvedFormType extends ResolvedFormType
 {
 
     /** @var FormOrdererInterface */
-    private $orderer;
+    protected $orderer;
 
     /**
      * @param FormOrdererInterface           $orderer
