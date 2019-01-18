@@ -1,20 +1,16 @@
 <?php
 
-/*
- * This file is part of the Ivory Ordered Form package.
- *
- * (c) Eric GELOEN <geloen.eric@gmail.com>
- *
- * For the full copyright and license information, please read the LICENSE
- * file that was distributed with this source code.
- */
-
 namespace Tenolo\FormOrdered\Exception;
 
 use Symfony\Component\Form\Exception\InvalidConfigurationException;
 
 /**
- * @author GeLo <geloen.eric@gmail.com>
+ * Class OrderedConfigurationException
+ *
+ * @package Tenolo\FormOrdered\Exception
+ * @author  GeLo <geloen.eric@gmail.com>
+ * @author  Nikita Loges
+ * @company tenolo GbR
  */
 class OrderedConfigurationException extends InvalidConfigurationException
 {
@@ -125,6 +121,6 @@ class OrderedConfigurationException extends InvalidConfigurationException
      */
     private static function decorateValue($value, $decorator = '"')
     {
-        return $decorator.$value.$decorator;
+        return $decorator . $value . $decorator;
     }
 }

@@ -1,14 +1,5 @@
 <?php
 
-/*
- * This file is part of the Ivory Ordered Form package.
- *
- * (c) Eric GELOEN <geloen.eric@gmail.com>
- *
- * For the full copyright and license information, please read the LICENSE
- * file that was distributed with this source code.
- */
-
 namespace Tenolo\FormOrdered\Extension;
 
 use Symfony\Component\Form\AbstractTypeExtension;
@@ -16,10 +7,16 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 /**
- * @author GeLo <geloen.eric@gmail.com>
+ * Class AbstractOrderedExtension
+ *
+ * @package Tenolo\FormOrdered\Extension
+ * @author  GeLo <geloen.eric@gmail.com>
+ * @author  Nikita Loges
+ * @company tenolo GbR
  */
 abstract class AbstractOrderedExtension extends AbstractTypeExtension
 {
+
     /**
      * {@inheritdoc}
      */
@@ -33,8 +30,7 @@ abstract class AbstractOrderedExtension extends AbstractTypeExtension
      */
     public function configureOptions(OptionsResolver $resolver)
     {
-        $resolver
-            ->setDefault('position', null)
-            ->setAllowedTypes('position', ['null', 'string', 'array']);
+        $resolver->setDefault('position', null);
+        $resolver->setAllowedTypes('position', ['null', 'string', 'array']);
     }
 }

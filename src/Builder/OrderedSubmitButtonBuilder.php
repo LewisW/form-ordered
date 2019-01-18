@@ -1,33 +1,27 @@
 <?php
 
-/*
- * This file is part of the Ivory Ordered Form package.
- *
- * (c) Eric GELOEN <geloen.eric@gmail.com>
- *
- * For the full copyright and license information, please read the LICENSE
- * file that was distributed with this source code.
- */
-
 namespace Tenolo\FormOrdered\Builder;
 
-use Tenolo\FormOrdered\Exception\OrderedConfigurationException;
-use Tenolo\FormOrdered\OrderedFormConfigInterface;
 use Symfony\Component\Form\Exception\BadMethodCallException;
 use Symfony\Component\Form\SubmitButtonBuilder;
+use Tenolo\FormOrdered\Exception\OrderedConfigurationException;
+use Tenolo\FormOrdered\OrderedFormConfigInterface;
 
 /**
- * @author GeLo <geloen.eric@gmail.com>
+ * Class OrderedSubmitButtonBuilder
+ *
+ * @package Tenolo\FormOrdered\Builder
+ * @author  GeLo <geloen.eric@gmail.com>
+ * @author  Nikita Loges
+ * @company tenolo GbR
  */
 class OrderedSubmitButtonBuilder extends SubmitButtonBuilder implements OrderedFormConfigBuilderInterface, OrderedFormConfigInterface
 {
-    /**
-     * @var string|array|null
-     */
-    private $position;
+    /** @var string|array|null */
+    protected $position;
 
     /**
-     * {@inheritdoc}
+     * @inheritdoc
      */
     public function getPosition()
     {
@@ -35,7 +29,7 @@ class OrderedSubmitButtonBuilder extends SubmitButtonBuilder implements OrderedF
     }
 
     /**
-     * {@inheritdoc}
+     * @inheritdoc
      */
     public function setPosition($position)
     {

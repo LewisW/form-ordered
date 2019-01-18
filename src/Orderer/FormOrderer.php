@@ -1,51 +1,38 @@
 <?php
 
-/*
- * This file is part of the Ivory Ordered Form package.
- *
- * (c) Eric GELOEN <geloen.eric@gmail.com>
- *
- * For the full copyright and license information, please read the LICENSE
- * file that was distributed with this source code.
- */
-
 namespace Tenolo\FormOrdered\Orderer;
 
-use Tenolo\FormOrdered\Exception\OrderedConfigurationException;
 use Symfony\Component\Form\FormInterface;
+use Tenolo\FormOrdered\Exception\OrderedConfigurationException;
 
 /**
- * @author GeLo <geloen.eric@gmail.com>
+ * Class FormOrderer
+ *
+ * @package Tenolo\FormOrdered\Orderer
+ * @author  GeLo <geloen.eric@gmail.com>
+ * @author  Nikita Loges
+ * @company tenolo GbR
  */
 class FormOrderer implements FormOrdererInterface
 {
-    /**
-     * @var array
-     */
-    private $weights;
+
+    /** @var array */
+    protected $weights;
+
+    /** @var array */
+    protected $differed;
+
+    /** @var int */
+    protected $firstWeight;
+
+    /** @var int */
+    protected $currentWeight;
+
+    /** @var int */
+    protected $lastWeight;
 
     /**
-     * @var array
-     */
-    private $differed;
-
-    /**
-     * @var int
-     */
-    private $firstWeight;
-
-    /**
-     * @var int
-     */
-    private $currentWeight;
-
-    /**
-     * @var int
-     */
-    private $lastWeight;
-
-    /**
-     * {@inheritdoc}
+     * @inheritdoc
      */
     public function order(FormInterface $form)
     {
@@ -71,7 +58,7 @@ class FormOrderer implements FormOrdererInterface
     /**
      * @param FormInterface $form
      */
-    private function processEmptyPosition(FormInterface $form)
+    protected function processEmptyPosition(FormInterface $form)
     {
         $this->processWeight($form, $this->currentWeight);
     }
@@ -80,7 +67,7 @@ class FormOrderer implements FormOrdererInterface
      * @param FormInterface $form
      * @param string        $position
      */
-    private function processStringPosition(FormInterface $form, $position)
+    protected function processStringPosition(FormInterface $form, $position)
     {
         if ($position === 'first') {
             $this->processFirst($form);
@@ -93,7 +80,7 @@ class FormOrderer implements FormOrdererInterface
      * @param FormInterface $form
      * @param array         $position
      */
-    private function processArrayPosition(FormInterface $form, array $position)
+    protected function processArrayPosition(FormInterface $form, array $position)
     {
         if (isset($position['before'])) {
             $this->processBefore($form, $position['before']);
@@ -107,7 +94,7 @@ class FormOrderer implements FormOrdererInterface
     /**
      * @param FormInterface $form
      */
-    private function processFirst(FormInterface $form)
+    protected function processFirst(FormInterface $form)
     {
         $this->processWeight($form, $this->firstWeight++);
     }
@@ -115,7 +102,7 @@ class FormOrderer implements FormOrdererInterface
     /**
      * @param FormInterface $form
      */
-    private function processLast(FormInterface $form)
+    protected function processLast(FormInterface $form)
     {
         $this->processWeight($form, $this->lastWeight + 1);
     }
@@ -124,7 +111,7 @@ class FormOrderer implements FormOrdererInterface
      * @param FormInterface $form
      * @param string        $before
      */
-    private function processBefore(FormInterface $form, $before)
+    protected function processBefore(FormInterface $form, $before)
     {
         if (!isset($this->weights[$before])) {
             $this->processDiffered($form, $before, 'before');
@@ -137,7 +124,7 @@ class FormOrderer implements FormOrdererInterface
      * @param FormInterface $form
      * @param string        $after
      */
-    private function processAfter(FormInterface $form, $after)
+    protected function processAfter(FormInterface $form, $after)
     {
         if (!isset($this->weights[$after])) {
             $this->processDiffered($form, $after, 'after');
@@ -150,7 +137,7 @@ class FormOrderer implements FormOrdererInterface
      * @param FormInterface $form
      * @param int           $weight
      */
-    private function processWeight(FormInterface $form, $weight)
+    protected function processWeight(FormInterface $form, $weight)
     {
         foreach ($this->weights as &$weightRef) {
             if ($weightRef >= $weight) {
@@ -175,7 +162,7 @@ class FormOrderer implements FormOrdererInterface
      *
      * @return int
      */
-    private function finishWeight(FormInterface $form, $weight, $position = null)
+    protected function finishWeight(FormInterface $form, $weight, $position = null)
     {
         if ($position === null) {
             foreach (array_keys($this->differed) as $position) {
@@ -205,7 +192,7 @@ class FormOrderer implements FormOrdererInterface
      *
      * @throws OrderedConfigurationException
      */
-    private function processDiffered(FormInterface $form, $differed, $position)
+    protected function processDiffered(FormInterface $form, $differed, $position)
     {
         if (!$form->getParent()->has($differed)) {
             throw OrderedConfigurationException::createInvalidDiffered($form->getName(), $position, $differed);
@@ -226,7 +213,7 @@ class FormOrderer implements FormOrdererInterface
      *
      * @throws OrderedConfigurationException
      */
-    private function detectCircularDiffered($name, $position, array $stack = [])
+    protected function detectCircularDiffered($name, $position, array $stack = [])
     {
         if (!isset($this->differed[$position][$name])) {
             return;
@@ -252,7 +239,7 @@ class FormOrderer implements FormOrdererInterface
      *
      * @throws OrderedConfigurationException
      */
-    private function detectedSymmetricDiffered($name, $differed, $position)
+    protected function detectedSymmetricDiffered($name, $differed, $position)
     {
         $reversePosition = ($position === 'before') ? 'after' : 'before';
 
@@ -265,7 +252,10 @@ class FormOrderer implements FormOrdererInterface
         }
     }
 
-    private function reset()
+    /**
+     *
+     */
+    protected function reset()
     {
         $this->weights = [];
         $this->differed = [

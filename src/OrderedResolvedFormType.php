@@ -1,20 +1,7 @@
 <?php
 
-/*
- * This file is part of the Ivory Ordered Form package.
- *
- * (c) Eric GELOEN <geloen.eric@gmail.com>
- *
- * For the full copyright and license information, please read the LICENSE
- * file that was distributed with this source code.
- */
-
 namespace Tenolo\FormOrdered;
 
-use Tenolo\FormOrdered\Builder\OrderedButtonBuilder;
-use Tenolo\FormOrdered\Builder\OrderedFormBuilder;
-use Tenolo\FormOrdered\Builder\OrderedSubmitButtonBuilder;
-use Tenolo\FormOrdered\Orderer\FormOrdererInterface;
 use Symfony\Component\EventDispatcher\EventDispatcher;
 use Symfony\Component\Form\ButtonTypeInterface;
 use Symfony\Component\Form\FormFactoryInterface;
@@ -24,15 +11,23 @@ use Symfony\Component\Form\FormView;
 use Symfony\Component\Form\ResolvedFormType;
 use Symfony\Component\Form\ResolvedFormTypeInterface;
 use Symfony\Component\Form\SubmitButtonTypeInterface;
+use Tenolo\FormOrdered\Builder\OrderedButtonBuilder;
+use Tenolo\FormOrdered\Builder\OrderedFormBuilder;
+use Tenolo\FormOrdered\Builder\OrderedSubmitButtonBuilder;
+use Tenolo\FormOrdered\Orderer\FormOrdererInterface;
 
 /**
- * @author GeLo <geloen.eric@gmail.com>
+ * Class OrderedResolvedFormType
+ *
+ * @package Tenolo\FormOrdered
+ * @author  GeLo <geloen.eric@gmail.com>
+ * @author  Nikita Loges
+ * @company tenolo GbR
  */
 class OrderedResolvedFormType extends ResolvedFormType
 {
-    /**
-     * @var FormOrdererInterface
-     */
+
+    /** @var FormOrdererInterface */
     private $orderer;
 
     /**
@@ -41,19 +36,15 @@ class OrderedResolvedFormType extends ResolvedFormType
      * @param array                          $typeExtensions
      * @param ResolvedFormTypeInterface|null $parent
      */
-    public function __construct(
-        FormOrdererInterface $orderer,
-        FormTypeInterface $innerType,
-        array $typeExtensions = [],
-        ResolvedFormTypeInterface $parent = null
-    ) {
+    public function __construct(FormOrdererInterface $orderer, FormTypeInterface $innerType, array $typeExtensions = [], ResolvedFormTypeInterface $parent = null)
+    {
         parent::__construct($innerType, $typeExtensions, $parent);
 
         $this->orderer = $orderer;
     }
 
     /**
-     * {@inheritdoc}
+     * @inheritdoc
      */
     public function finishView(FormView $view, FormInterface $form, array $options)
     {
@@ -77,7 +68,7 @@ class OrderedResolvedFormType extends ResolvedFormType
     }
 
     /**
-     * {@inheritdoc}
+     * @inheritdoc
      */
     protected function newBuilder($name, $dataClass, FormFactoryInterface $factory, array $options)
     {

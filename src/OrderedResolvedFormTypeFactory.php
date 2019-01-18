@@ -1,31 +1,26 @@
 <?php
 
-/*
- * This file is part of the Ivory Ordered Form package.
- *
- * (c) Eric GELOEN <geloen.eric@gmail.com>
- *
- * For the full copyright and license information, please read the LICENSE
- * file that was distributed with this source code.
- */
-
 namespace Tenolo\FormOrdered;
 
-use Tenolo\FormOrdered\Orderer\FormOrderer;
-use Tenolo\FormOrdered\Orderer\FormOrdererInterface;
 use Symfony\Component\Form\FormTypeInterface;
 use Symfony\Component\Form\ResolvedFormTypeFactory;
 use Symfony\Component\Form\ResolvedFormTypeInterface;
+use Tenolo\FormOrdered\Orderer\FormOrderer;
+use Tenolo\FormOrdered\Orderer\FormOrdererInterface;
 
 /**
- * @author GeLo <geloen.eric@gmail.com>
+ * Class OrderedResolvedFormTypeFactory
+ *
+ * @package Tenolo\FormOrdered
+ * @author  GeLo <geloen.eric@gmail.com>
+ * @author  Nikita Loges
+ * @company tenolo GbR
  */
 class OrderedResolvedFormTypeFactory extends ResolvedFormTypeFactory
 {
-    /**
-     * @var FormOrdererInterface
-     */
-    private $orderer;
+
+    /** @var FormOrdererInterface */
+    protected $orderer;
 
     /**
      * @param FormOrdererInterface|null $orderer
@@ -36,13 +31,10 @@ class OrderedResolvedFormTypeFactory extends ResolvedFormTypeFactory
     }
 
     /**
-     * {@inheritdoc}
+     * @inheritdoc
      */
-    public function createResolvedType(
-        FormTypeInterface $type,
-        array $typeExtensions,
-        ResolvedFormTypeInterface $parent = null
-    ) {
+    public function createResolvedType(FormTypeInterface $type, array $typeExtensions, ResolvedFormTypeInterface $parent = null)
+    {
         return new OrderedResolvedFormType($this->orderer, $type, $typeExtensions, $parent);
     }
 }
