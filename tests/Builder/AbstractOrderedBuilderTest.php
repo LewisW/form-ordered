@@ -90,7 +90,7 @@ abstract class AbstractOrderedBuilderTest extends AbstractTestCase
     }
 
     /**
-     * @expectedException \Ivory\OrderedForm\Exception\OrderedConfigurationException
+     * @expectedException \Tenolo\OrderedForm\Exception\OrderedConfigurationException
      * @expectedExceptionMessage The "foo" form uses position as string which can only be "first" or "last" (current: "foo").
      */
     public function testInvalidStringPosition()
@@ -99,7 +99,7 @@ abstract class AbstractOrderedBuilderTest extends AbstractTestCase
     }
 
     /**
-     * @expectedException \Ivory\OrderedForm\Exception\OrderedConfigurationException
+     * @expectedException \Tenolo\OrderedForm\Exception\OrderedConfigurationException
      * @expectedExceptionMessage The "foo" form uses position as array or you must define the "before" or "after" option (current: "bar").
      */
     public function testInvalidArrayPosition()

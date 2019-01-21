@@ -1,18 +1,18 @@
 # Usage
 
-Before starting, if you're not already familiar with the Symfony2 form component, I recommend you to read this
+Before starting, if you're not already familiar with the Symfony form component, I recommend you to read this
 [documentation](http://symfony.com/doc/current/components/form/introduction.html).
 
 ## Set up
 
 ### Default orderer
 
-To make the library working, you need to set up the Symfony2 form component the right way:
+To make the library working, you need to set up the Symfony form component the right way:
 
 ``` php
 use Symfony\Component\Form\Forms;
-use Ivory\OrderedForm\OrderedResolvedFormTypeFactory;
-use Ivory\OrderedForm\Extension\OrderedExtension;
+use Tenolo\OrderedForm\OrderedResolvedFormTypeFactory;
+use Tenolo\OrderedForm\Extension\OrderedExtension;
 
 $formFactory = Forms::createFormFactoryBuilder()
     ->setResolvedTypeFactory(new OrderedResolvedFormTypeFactory())
@@ -30,12 +30,12 @@ $view = $form->createView();
 
 ### Custom orderer
 
-The library has been designed around the `Ivory\OrderedForm\Orderer\FormOrdererInterface` which have for responsibility
+The library has been designed around the `Tenolo\OrderedForm\Orderer\FormOrdererInterface` which have for responsibility
 to order a form. This interface wraps a single method called `order` which takes a form interface as argument and
 returns the ordered children form names.
 
 ``` php
-use Ivory\OrderedForm\Orderer\FormOrdererInterface;
+use Tenolo\OrderedForm\Orderer\FormOrdererInterface;
 use Symfony\Component\Form\FormInterface;
 
 CustomFormOrderer implements FormOrdererInterface

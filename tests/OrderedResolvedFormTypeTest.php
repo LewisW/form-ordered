@@ -68,7 +68,7 @@ class OrderedResolvedFormTypeTest extends AbstractTestCase
         );
 
         $this->assertInstanceOf(
-            'Ivory\OrderedForm\Builder\OrderedButtonBuilder',
+            'Tenolo\OrderedForm\Builder\OrderedButtonBuilder',
             $this->type->createBuilder($this->createMockFormFactory(), 'name')
         );
     }
@@ -85,7 +85,7 @@ class OrderedResolvedFormTypeTest extends AbstractTestCase
         );
 
         $this->assertInstanceOf(
-            'Ivory\OrderedForm\Builder\OrderedSubmitButtonBuilder',
+            'Tenolo\OrderedForm\Builder\OrderedSubmitButtonBuilder',
             $this->type->createBuilder($this->createMockFormFactory(), 'name')
         );
     }
