@@ -1,11 +1,11 @@
 ![tenolo](https://tenolo.de/themes/486/img/tenolo_werbeagentur_bochum.png)
 
-[![Latest Stable Version](https://img.shields.io/packagist/php-v/tenolo/form-ordered.svg)](https://packagist.org/packages/tenolo/form-ordered)
-[![Latest Stable Version](https://poser.pugx.org/tenolo/form-ordered/version)](https://packagist.org/packages/tenolo/form-ordered)
-[![Total Downloads](https://poser.pugx.org/tenolo/form-ordered/downloads)](https://packagist.org/packages/tenolo/form-ordered)
-[![Monthly Downloads](https://poser.pugx.org/tenolo/form-ordered/d/monthly)](https://packagist.org/packages/tenolo/form-ordered)
-[![Latest Unstable Version](https://poser.pugx.org/tenolo/form-ordered/v/unstable)](https://packagist.org/packages/tenolo/form-ordered)
-[![License](https://poser.pugx.org/tenolo/form-ordered/license)](https://packagist.org/packages/tenolo/form-ordered)
+[![PHP Version](https://img.shields.io/packagist/php-v/tenolo/form-ordered.svg)](https://packagist.org/packages/tenolo/form-ordered)
+[![Latest Stable Version](https://img.shields.io/packagist/v/tenolo/form-ordered.svg?label=stable)](https://packagist.org/packages/tenolo/form-ordered)
+[![Latest Unstable Version](https://img.shields.io/packagist/vpre/tenolo/form-ordered.svg?label=unstable)](https://packagist.org/packages/tenolo/form-ordered)
+[![Total Downloads](https://img.shields.io/packagist/dt/tenolo/form-ordered.svg)](https://packagist.org/packages/tenolo/form-ordered)
+[![Total Downloads](https://img.shields.io/packagist/dm/tenolo/form-ordered.svg)](https://packagist.org/packages/tenolo/form-ordered)
+[![License](https://img.shields.io/packagist/l/tenolo/form-ordered.svg)](https://packagist.org/packages/tenolo/form-ordered)
 
 # Symfony Form Order
 
