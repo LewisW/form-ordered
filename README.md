@@ -1,4 +1,4 @@
-![tenolo](https://tenolo.de/themes/486/img/tenolo_werbeagentur_bochum.png)
+![tenolo](https://content.tenolo.com/tenolo.png)
 
 [![PHP Version](https://img.shields.io/packagist/php-v/tenolo/form-ordered.svg)](https://packagist.org/packages/tenolo/form-ordered)
 [![Latest Stable Version](https://img.shields.io/packagist/v/tenolo/form-ordered.svg?label=stable)](https://packagist.org/packages/tenolo/form-ordered)
