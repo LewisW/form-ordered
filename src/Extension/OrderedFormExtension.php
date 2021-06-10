@@ -26,7 +26,7 @@ class OrderedFormExtension extends AbstractOrderedExtension
     /**
      * @inheritdoc
      */
-    public function getExtendedTypes()
+    public static function getExtendedTypes()
     {
         return [FormType::class];
     }
